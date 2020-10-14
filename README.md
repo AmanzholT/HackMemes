@@ -12,7 +12,7 @@ Instructions:
 6. make changes locally ("c:/Users/"username"/HackMemes")
 7. git add [filename] (add files that you have added/modified)
 8. git commit -m "[commit_message]"
-9. git push --set-upstream [name_of_your_branch]
+9. git push --set-upstream origin [name_of_your_branch]
 10. create pull request on github
 11. git checkout main
 12. repeat from step 3
