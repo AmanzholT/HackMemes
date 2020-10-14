@@ -10,9 +10,9 @@ Instructions:
 5. git push origin [name_of_your_new_branch]
 	if doing it first time, you will need to authorise first with git config user.email "[your_email]" and git config user.name "[your_name]"
 6. make changes locally ("c:/Users/"username"/HackMemes")
-	if you added any new files, git add "filename"
-7. git commit -m "[commit_message]"
-8. git push --set-upstream [name_of_your_branch]
-9. create pull request on github
-10. git checkout main
-11. repeat from step 3
+7. git add [filename] (add files that you have added/modified)
+8. git commit -m "[commit_message]"
+9. git push --set-upstream [name_of_your_branch]
+10. create pull request on github
+11. git checkout main
+12. repeat from step 3
