@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Movies</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="51127bf7-d0d9-4b22-bc35-01bfdddb85b7" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 66.6%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🍿</span></div><h1 class="page-title">Movies</h1></header><div class="page-body"><div id="5c9ec1b9-00d4-4e3c-aa0d-76969324ea75" class="collection-content"><h4 class="collection-title">Watched</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Date</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Review</th></tr></thead><tbody><tr id="3ee3dbc9-c35b-45ab-8ee5-9aebbd84c359"><td class="cell-title"><a href="https://www.notion.so/3ee3dbc9c35b45ab8ee59aebbd84c359">Магическая битва</a></td><td class="cell-92$;"><time>@September 22, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="7c363443-f33a-49d9-be8c-30de0c9e3429"><td class="cell-title"><a href="https://www.notion.so/7c363443f33a49d9be8c30de0c9e3429">Лобстер</a></td><td class="cell-92$;"><time>@September 12, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="c608807e-a546-4478-b238-db62672986c2"><td class="cell-title"><a href="https://www.notion.so/Nope-c608807ea5464478b238db62672986c2">Nope</a></td><td class="cell-92$;"><time>@September 10, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="87d46774-5072-475d-8441-6dc20bd65d57"><td class="cell-title"><a href="https://www.notion.so/87d467745072475d84416dc20bd65d57">Дом Гуччи</a></td><td class="cell-92$;"><time>@September 6, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="bc00a5cb-5c00-4d3f-8719-299663cc08f2"><td class="cell-title"><a href="https://www.notion.so/bc00a5cb5c004d3f8719299663cc08f2">Варяг</a></td><td class="cell-92$;"><time>@August 19, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="9b8e7e7b-af25-4987-944a-08dd04fe7933"><td class="cell-title"><a href="https://www.notion.so/9b8e7e7baf254987944a08dd04fe7933">Бесславные ублюдки</a></td><td class="cell-92$;"><time>@July 31, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="22a97655-fdeb-4c9d-83d3-54182a62ef69"><td class="cell-title"><a href="https://www.notion.so/22a97655fdeb4c9d83d354182a62ef69">Доводы рассудка</a></td><td class="cell-92$;"><time>@July 30, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="42266b96-adc1-4e13-979f-d0799808e128"><td class="cell-title"><a href="https://www.notion.so/42266b96adc14e13979fd0799808e128">Я краснею</a></td><td class="cell-92$;"><time>@July 2, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="a45d3c53-1b2e-4e5c-9e54-b943e3233aa8"><td class="cell-title"><a href="https://www.notion.so/a45d3c531b2e4e5c9e54b943e3233aa8">ТопГан: Мэверик</a></td><td class="cell-92$;"><time>@June 26, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="dfdc6d81-860e-4de7-b3d9-a811d2cc636b"><td class="cell-title"><a href="https://www.notion.so/dfdc6d81860e4de7b3d9a811d2cc636b">Перед полуночью</a></td><td class="cell-92$;"><time>@June 21, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="65ca9957-8775-40ab-a61a-2b4a132d8c0b"><td class="cell-title"><a href="https://www.notion.so/65ca9957877540aba61a2b4a132d8c0b">Перед закатом</a></td><td class="cell-92$;"><time>@June 19, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="75597c9e-0661-4b47-8879-76ca907d37bd"><td class="cell-title"><a href="https://www.notion.so/75597c9e06614b47887976ca907d37bd">Перед рассветом</a></td><td class="cell-92$;"><time>@June 18, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="d8348fb0-6a72-48b1-b50c-91367c506011"><td class="cell-title"><a href="https://www.notion.so/2-d8348fb06a7248b1b50c91367c506011">Тихое место 2</a></td><td class="cell-92$;"><time>@June 17, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="0a41d823-d27e-440b-9188-733425219bb5"><td class="cell-title"><a href="https://www.notion.so/0a41d823d27e440b9188733425219bb5">Всё везде и сразу</a></td><td class="cell-92$;"><time>@June 12, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="b003c911-5272-4dbd-a1d1-dc99d01a6dc4"><td class="cell-title"><a href="https://www.notion.so/b003c91152724dbda1d1dc99d01a6dc4">Фантастические твари: Тайны Дамблдора</a></td><td class="cell-92$;"><time>@June 6, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="7dcfc9eb-1bec-41d1-b93c-df117a137fb2"><td class="cell-title"><a href="https://www.notion.so/7dcfc9eb1bec41d1b93cdf117a137fb2">Курьер</a></td><td class="cell-92$;"><time>@May 31, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="851e47d5-9cc7-4059-84c9-3e48ad56e2ac"><td class="cell-title"><a href="https://www.notion.so/851e47d59cc7405984c93e48ad56e2ac">Охотники на троллей</a></td><td class="cell-92$;"><time>@May 15, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="5996f91c-d77c-4a5c-872b-9bf9b0016a96"><td class="cell-title"><a href="https://www.notion.so/5996f91cd77c4a5c872b9bf9b0016a96">Суровое испытание</a></td><td class="cell-92$;"><time>@May 15, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="f7aa7dc9-597d-4e5d-9576-d869c3a2d916"><td class="cell-title"><a href="https://www.notion.so/f7aa7dc9597d4e5d9576d869c3a2d916">Константин: Повелитель тьмы</a></td><td class="cell-92$;"><time>@May 15, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="9a0850ac-1476-4b6b-b1ea-aee11eba0f63"><td class="cell-title"><a href="https://www.notion.so/9a0850ac14764b6bb1eaaee11eba0f63">Джули и Джулия</a></td><td class="cell-92$;"><time>@May 14, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="7eaa95b0-8a09-4fc0-89f5-78b38f81455c"><td class="cell-title"><a href="https://www.notion.so/7eaa95b08a094fc089f578b38f81455c">Апокалипсис сегодня</a></td><td class="cell-92$;"><time>@May 11, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="41311cc1-b24e-40f1-9cdf-39898a90bd62"><td class="cell-title"><a href="https://www.notion.so/41311cc1b24e40f19cdf39898a90bd62">Сырое</a></td><td class="cell-92$;"><time>@May 9, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="5b50a2f7-cc76-42d7-aead-513eadd3d0a5"><td class="cell-title"><a href="https://www.notion.so/5b50a2f7cc7642d7aead513eadd3d0a5">Вечные</a></td><td class="cell-92$;"><time>@May 8, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="765eb2bd-e280-418c-9599-9d8beb63fb81"><td class="cell-title"><a href="https://www.notion.so/765eb2bde280418c95999d8beb63fb81">Кингсмен. Начало</a></td><td class="cell-92$;"><time>@May 6, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="5610b212-58d4-4297-9893-ffd15e8e2628"><td class="cell-title"><a href="https://www.notion.so/5610b21258d442979893ffd15e8e2628">Темные времена</a></td><td class="cell-92$;"><time>@May 6, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="e68cc542-028c-44da-b712-cad23003853f"><td class="cell-title"><a href="https://www.notion.so/e68cc542028c44dab712cad23003853f">Малышка на миллион</a></td><td class="cell-92$;"><time>@May 5, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="0bd037fe-d145-4f0a-a0a1-113caf07c44e"><td class="cell-title"><a href="https://www.notion.so/0bd037fed1454f0aa0a1113caf07c44e">Король говорит</a></td><td class="cell-92$;"><time>@May 1, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="85a4dbe3-e1c7-4c53-b69e-6ba7444395e9"><td class="cell-title"><a href="https://www.notion.so/85a4dbe3e1c74c53b69e6ba7444395e9">Дарья. А скоро колледж?</a></td><td class="cell-92$;"><time>@April 25, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="d67d691b-3d6f-4d40-b902-e1d654f8f41f"><td class="cell-title"><a href="https://www.notion.so/d67d691b3d6f4d40b902e1d654f8f41f">Дарья. А скоро осень?</a></td><td class="cell-92$;"><time>@April 24, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="f0f4fbf8-5374-4fa8-9a0d-76b47000e8dd"><td class="cell-title"><a href="https://www.notion.so/f0f4fbf853744fa89a0d76b47000e8dd">Пока не сыграл в ящик</a></td><td class="cell-92$;"><time>@April 10, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="ec3d1056-0c88-4133-8970-bdfc42cd0a73"><td class="cell-title"><a href="https://www.notion.so/ec3d10560c8841338970bdfc42cd0a73">Гордость и предубеждение</a></td><td class="cell-92$;"><time>@March 25, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="af7fd270-3c08-4643-a023-d7aef1e24196"><td class="cell-title"><a href="https://www.notion.so/Tinder-af7fd2703c084643a023d7aef1e24196">Аферист из Tinder</a></td><td class="cell-92$;"><time>@March 24, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="48e8937f-3e8a-4682-87b3-14a7425b3c29"><td class="cell-title"><a href="https://www.notion.so/48e8937f3e8a468287b314a7425b3c29">Король Англии</a></td><td class="cell-92$;"><time>@March 23, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="19247b13-3442-4a67-810e-e1fbf3fda19d"><td class="cell-title"><a href="https://www.notion.so/19247b1334424a67810ee1fbf3fda19d">Дорога на Эльдорадо</a></td><td class="cell-92$;"><time>@March 21, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="fab87503-1f27-4398-9071-8f9ea624a8ca"><td class="cell-title"><a href="https://www.notion.so/fab875031f27439890718f9ea624a8ca">Бэтмен</a></td><td class="cell-92$;"><time>@March 20, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="5fba0237-666d-4e72-a6b8-636e01a7ae2f"><td class="cell-title"><a href="https://www.notion.so/5fba0237666d4e72a6b8636e01a7ae2f">Виноваты звезды</a></td><td class="cell-92$;"><time>@March 6, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="cd825c95-a4f6-4649-8f0b-c43c4da73955"><td class="cell-title"><a href="https://www.notion.so/cd825c95a4f646498f0bc43c4da73955">Смерть на Ниле</a></td><td class="cell-92$;"><time>@February 19, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="23e29062-c936-41c4-9206-5aa11010ff92"><td class="cell-title"><a href="https://www.notion.so/23e29062c93641c492065aa11010ff92">Москва слезам не верит</a></td><td class="cell-92$;"><time>@January 26, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="8bcbe39b-916f-4819-b828-8d61384807d8"><td class="cell-title"><a href="https://www.notion.so/8bcbe39b916f4819b8288d61384807d8">Выживут только любовники</a></td><td class="cell-92$;"><time>@January 25, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="7dc8838a-6d53-4471-9ede-4f4dd3dabc82"><td class="cell-title"><a href="https://www.notion.so/7dc8838a6d5344719ede4f4dd3dabc82">Поезд в Пусан</a></td><td class="cell-92$;"><time>@January 18, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="ea5f6a6f-3d0c-4e55-871d-0bd61c69f6fa"><td class="cell-title"><a href="https://www.notion.so/ea5f6a6f3d0c4e55871d0bd61c69f6fa">Агнец</a></td><td class="cell-92$;"><time>@January 14, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="7a0cfe8b-f0a2-4a73-bf5a-fcc8bc882dd3"><td class="cell-title"><a href="https://www.notion.so/7a0cfe8bf0a24a73bf5afcc8bc882dd3">Не время умирать</a></td><td class="cell-92$;"><time>@January 13, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="af2d75d3-32c4-406f-8120-123568854e7d"><td class="cell-title"><a href="https://www.notion.so/af2d75d332c4406f8120123568854e7d">Бразилия</a></td><td class="cell-92$;"><time>@January 10, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="4e60b0a1-4240-441c-bb64-094be90a75ec"><td class="cell-title"><a href="https://www.notion.so/4e60b0a14240441cbb64094be90a75ec">Эта замечательная жизнь</a></td><td class="cell-92$;"><time>@January 9, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="f5724d43-3684-498a-b260-f76ffe2b9926"><td class="cell-title"><a href="https://www.notion.so/f5724d433684498ab260f76ffe2b9926">Американский психопат</a></td><td class="cell-92$;"><time>@January 5, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="62023d3e-b627-4076-80bd-92142335ccae"><td class="cell-title"><a href="https://www.notion.so/62023d3eb627407680bd92142335ccae">Человек-паук: Нет пути домой</a></td><td class="cell-92$;"><time>@January 2, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="18133ec7-770e-443c-ac7e-198038acd5c9"><td class="cell-title"><a href="https://www.notion.so/18133ec7770e443cac7e198038acd5c9">Возвращение в Хогвартс</a></td><td class="cell-92$;"><time>@January 2, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="5bf72cfd-a264-4463-914c-33bf2d085a72"><td class="cell-title"><a href="https://www.notion.so/5bf72cfda2644463914c33bf2d085a72">Не смотрите наверх</a></td><td class="cell-92$;"><time>@December 29, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="87c37b4b-a5da-4c9a-90fe-9008e68554f7"><td class="cell-title"><a href="https://www.notion.so/87c37b4ba5da4c9a90fe9008e68554f7">Матрица: Революция</a></td><td class="cell-92$;"><time>@December 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="88e215c7-b14d-4093-b1a0-4c918848a0ad"><td class="cell-title"><a href="https://www.notion.so/88e215c7b14d4093b1a04c918848a0ad">Матрица: Перезагрузка</a></td><td class="cell-92$;"><time>@December 24, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="2a3a8121-5a80-4a3f-89f3-a4ea48a821c7"><td class="cell-title"><a href="https://www.notion.so/2a3a81215a804a3f89f3a4ea48a821c7">Матрица</a></td><td class="cell-92$;"><time>@December 11, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="61368a18-c68e-4423-9b55-cacfd813a596"><td class="cell-title"><a href="https://www.notion.so/61368a18c68e44239b55cacfd813a596">Прошлой ночью в Сохо</a></td><td class="cell-92$;"><time>@December 8, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="37c817fc-6eb3-441b-8f72-dccd6f3097f4"><td class="cell-title"><a href="https://www.notion.so/37c817fc6eb3441b8f72dccd6f3097f4">Идеальная синева</a></td><td class="cell-92$;"><time>@December 7, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="bd811af2-ba2a-4ccf-8b0f-c933c55d7b55"><td class="cell-title"><a href="https://www.notion.so/bd811af2ba2a4ccf8b0fc933c55d7b55">Византия</a></td><td class="cell-92$;"><time>@December 4, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="8d3f16fa-241d-4a0f-849d-b449b5aab09d"><td class="cell-title"><a href="https://www.notion.so/8d3f16fa241d4a0f849db449b5aab09d">Паприка</a></td><td class="cell-92$;"><time>@December 1, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="13d4b9d4-ade8-40da-9e9c-34b0f0b814ef"><td class="cell-title"><a href="https://www.notion.so/13d4b9d4ade840da9e9c34b0f0b814ef">Никто</a></td><td class="cell-92$;"><time>@November 28, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="b521ff41-db33-4957-9438-9efdaa3f379e"><td class="cell-title"><a href="https://www.notion.so/b521ff41db33495794389efdaa3f379e">Пожары</a></td><td class="cell-92$;"><time>@November 22, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="37250d23-91d8-4625-97e8-68e5b733b267"><td class="cell-title"><a href="https://www.notion.so/37250d2391d8462597e868e5b733b267">Последняя дуэль</a></td><td class="cell-92$;"><time>@November 17, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="2a25cc7d-4a28-4109-8fd2-6782cdafd57a"><td class="cell-title"><a href="https://www.notion.so/2a25cc7d4a2841098fd26782cdafd57a">Французский вестник</a></td><td class="cell-92$;"><time>@November 15, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="6ef5ed83-04d7-42ba-a99c-78c122be71ea"><td class="cell-title"><a href="https://www.notion.so/6ef5ed8304d742baa99c78c122be71ea">Перед полуночью</a></td><td class="cell-92$;"><time>@June 21, 2022</time></td><td class="cell-rzlg"></td></tr><tr id="891af793-3838-470c-96a8-cdefe63ffaf7"><td class="cell-title"><a href="https://www.notion.so/891af7933838470c96a8cdefe63ffaf7">Прекрасная эпоха</a></td><td class="cell-92$;"><time>@November 15, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="45930dd4-a3d0-462b-92fe-3e0a7490e648"><td class="cell-title"><a href="https://www.notion.so/45930dd4a3d0462b92fe3e0a7490e648">Дом у озера</a></td><td class="cell-92$;"><time>@November 3, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="d1cef74a-2df7-450e-8e8b-a48605b25f5d"><td class="cell-title"><a href="https://www.notion.so/d1cef74a2df7450e8e8ba48605b25f5d">Виновный</a></td><td class="cell-92$;"><time>@November 3, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="5fc9f899-aca5-4641-9046-7db19ca4ca7c"><td class="cell-title"><a href="https://www.notion.so/5fc9f899aca5464190467db19ca4ca7c">Убийца</a></td><td class="cell-92$;"><time>@October 30, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="828dbbc0-fd49-4a9c-8912-66f84c9d11b1"><td class="cell-title"><a href="https://www.notion.so/828dbbc0fd494a9c891266f84c9d11b1">Крупная рыба</a></td><td class="cell-92$;"><time>@October 29, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="79678239-0779-4940-8907-d7b1292f013e"><td class="cell-title"><a href="https://www.notion.so/79678239077949408907d7b1292f013e">Дюна</a></td><td class="cell-92$;"><time>@October 17, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="fc4b1afb-a6fd-494b-89ea-ac8ea6b4ff7c"><td class="cell-title"><a href="https://www.notion.so/fc4b1afba6fd494b89eaac8ea6b4ff7c">Круэлла</a></td><td class="cell-92$;"><time>@October 13, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="531812ed-1589-4151-aedf-d6d1ccfdbd85"><td class="cell-title"><a href="https://www.notion.so/531812ed15894151aedfd6d1ccfdbd85">Главный герой</a></td><td class="cell-92$;"><time>@October 12, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="bb40d180-8f9c-4071-b25e-4e5fe9fc9466"><td class="cell-title"><a href="https://www.notion.so/bb40d1808f9c4071b25e4e5fe9fc9466">Дюна</a></td><td class="cell-92$;"><time>@September 18, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="92822365-8309-460c-af11-fe56353a3c26"><td class="cell-title"><a href="https://www.notion.so/2-928223658309460caf11fe56353a3c26">Отряд самоубийц 2</a></td><td class="cell-92$;"><time>@September 14, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="007acc7c-ca85-424b-bafa-51cf51f57d70"><td class="cell-title"><a href="https://www.notion.so/007acc7cca85424bbafa51cf51f57d70">Ведьма</a></td><td class="cell-92$;"><time>@September 12, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="3ff41d47-6a8f-4477-ae93-ccd0418e05d7"><td class="cell-title"><a href="https://www.notion.so/3ff41d476a8f4477ae93ccd0418e05d7">Патерсон</a></td><td class="cell-92$;"><time>@September 11, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="156aef98-b6e5-4e85-af9f-a49504ea4925"><td class="cell-title"><a href="https://www.notion.so/156aef98b6e54e85af9fa49504ea4925">Враг</a></td><td class="cell-92$;"><time>@September 10, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="b2859b4f-9124-4cb9-af7d-96d162e062b1"><td class="cell-title"><a href="https://www.notion.so/b2859b4f91244cb9af7d96d162e062b1">Разрушение</a></td><td class="cell-92$;"><time>@September 6, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="9a44d41d-a13e-43f0-8a73-7ec9d3b52792"><td class="cell-title"><a href="https://www.notion.so/2013-9a44d41da13e43f08a737ec9d3b52792">Связь (2013)</a></td><td class="cell-92$;"><time>@September 5, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="40e289f2-a912-4224-8450-0bef6a20e570"><td class="cell-title"><a href="https://www.notion.so/40e289f2a912422484500bef6a20e570">СолнцеСтояние</a></td><td class="cell-92$;"><time>@September 5, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="9f2c7162-1faa-4d85-9c87-58902b5c0d3a"><td class="cell-title"><a href="https://www.notion.so/9f2c71621faa4d859c8758902b5c0d3a">Заражение</a></td><td class="cell-92$;"><time>@September 4, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="0f6804ed-f1b3-4c4c-82f7-682ba61ae30e"><td class="cell-title"><a href="https://www.notion.so/0f6804edf1b34c4c82f7682ba61ae30e">Ведьмак. Кошмар волка</a></td><td class="cell-92$;"><time>@August 24, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="cfaec3f8-fde7-46d7-a221-8fb40667005c"><td class="cell-title"><a href="https://www.notion.so/cfaec3f8fde746d7a2218fb40667005c">Зеленая книга</a></td><td class="cell-92$;"><time>@August 21, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="ed5479fd-f07e-4249-bcd6-4c979b16c6d0"><td class="cell-title"><a href="https://www.notion.so/ed5479fdf07e4249bcd64c979b16c6d0">Стрингер</a></td><td class="cell-92$;"><time>@August 11, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="4c1fba4d-2efe-4c9f-a158-60c8165c4aa1"><td class="cell-title"><a href="https://www.notion.so/4c1fba4d2efe4c9fa15860c8165c4aa1">Касабланка</a></td><td class="cell-92$;"><time>@July 10, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="1d8a131b-e17b-4239-8947-6bba56b5db2e"><td class="cell-title"><a href="https://www.notion.so/1d8a131be17b423989476bba56b5db2e">Эмма.</a></td><td class="cell-92$;"><time>@July 8, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="e33795ff-d050-4a4c-aa94-65c2e577958d"><td class="cell-title"><a href="https://www.notion.so/e33795ffd0504a4caa9465c2e577958d">Семь жизней</a></td><td class="cell-92$;"><time>@June 30, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="a4f4533c-a68d-4c9e-9144-db775ce8c1d9"><td class="cell-title"><a href="https://www.notion.so/a4f4533ca68d4c9e9144db775ce8c1d9">Вторая жизнь Уве</a></td><td class="cell-92$;"><time>@June 29, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="92ebc23f-8181-433a-bdfc-351e5c5a8b07"><td class="cell-title"><a href="https://www.notion.so/92ebc23f8181433abdfc351e5c5a8b07">Пленницы</a></td><td class="cell-92$;"><time>@June 28, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="f7c5ad35-f703-4e60-8cb5-05b3da29158a"><td class="cell-title"><a href="https://www.notion.so/f7c5ad35f7034e608cb505b3da29158a">Хоббит: Битва пяти воинств</a></td><td class="cell-92$;"><time>@June 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="f8807ac9-fde2-4665-8d55-54feaa197e36"><td class="cell-title"><a href="https://www.notion.so/f8807ac9fde246658d5554feaa197e36">Эдвард руки-ножницы</a></td><td class="cell-92$;"><time>@June 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="89c40b2b-936c-4f28-80b1-cd3fe4a65547"><td class="cell-title"><a href="https://www.notion.so/89c40b2b936c4f2880b1cd3fe4a65547">Гнев человеческий</a></td><td class="cell-92$;"><time>@June 23, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="79cfed38-4eef-4bc9-a286-1b8be46609cf"><td class="cell-title"><a href="https://www.notion.so/79cfed384eef4bc9a2861b8be46609cf">Хоббит: Пустошь Смауга</a></td><td class="cell-92$;"><time>@June 14, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="cf03f4f3-705d-47c1-b6c4-5033893a65ff"><td class="cell-title"><a href="https://www.notion.so/cf03f4f3705d47c1b6c45033893a65ff">Клинок, рассекающий демона: Бесконечный поезд</a></td><td class="cell-92$;"><time>@June 10, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="4891d35b-76e6-45f7-8eef-ce33efb04d52"><td class="cell-title"><a href="https://www.notion.so/4891d35b76e645f78eefce33efb04d52">Хоббит: Нежданное путешествие</a></td><td class="cell-92$;"><time>@June 7, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="98e44825-f958-415b-8fec-9ec4de96b81e"><td class="cell-title"><a href="https://www.notion.so/98e44825f958415b8fec9ec4de96b81e">Легенда о волках</a></td><td class="cell-92$;"><time>@June 7, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="bf911d6c-f860-4266-815a-55ca050b5d31"><td class="cell-title"><a href="https://www.notion.so/bf911d6cf8604266815a55ca050b5d31">Песнь моря</a></td><td class="cell-92$;"><time>@June 6, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="a149086b-d003-4330-8316-8e0e70d4fb12"><td class="cell-title"><a href="https://www.notion.so/a149086bd003433083168e0e70d4fb12">Тайна аббатства Келлс</a></td><td class="cell-92$;"><time>@June 5, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="578b9302-29af-477c-b716-c39bac25328d"><td class="cell-title"><a href="https://www.notion.so/The-Mitchells-vs-The-Machines-578b930229af477cb716c39bac25328d">The Mitchells vs. The Machines</a></td><td class="cell-92$;"><time>@June 3, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="31ece45a-0f35-43cf-b3a9-b97389da0892"><td class="cell-title"><a href="https://www.notion.so/31ece45a0f3543cfb3a9b97389da0892">Кин-дза-дза</a></td><td class="cell-92$;"><time>@May 29, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="ff900545-6d26-40fe-b452-104de3edde19"><td class="cell-title"><a href="https://www.notion.so/ff9005456d2640feb452104de3edde19">Порко Россо</a></td><td class="cell-92$;"><time>@May 27, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="4324eede-f635-4e0b-844c-28828172292b"><td class="cell-title"><a href="https://www.notion.so/4324eedef6354e0b844c28828172292b">Хороший год</a></td><td class="cell-92$;"><time>@May 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="f9744c33-abf5-45ba-b85a-03e13a5b316d"><td class="cell-title"><a href="https://www.notion.so/f9744c33abf545bab85a03e13a5b316d">Четыре комнаты</a></td><td class="cell-92$;"><time>@May 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="92c76816-7f06-46c7-aaf0-2ad8b0a0b15a"><td class="cell-title"><a href="https://www.notion.so/92c768167f0646c7aaf02ad8b0a0b15a">Матрица: Революция</a></td><td class="cell-92$;"><time>@December 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="7b45fd1e-1181-4bb8-b450-ba9009293de7"><td class="cell-title"><a href="https://www.notion.so/7b45fd1e11814bb8b450ba9009293de7">Бесподобный мистер Фокс</a></td><td class="cell-92$;"><time>@May 26, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="afb712c8-993e-4bdb-b2ff-e618d4dc697f"><td class="cell-title"><a href="https://www.notion.so/afb712c8993e4bdbb2ffe618d4dc697f">Шепот сердца</a></td><td class="cell-92$;"><time>@May 18, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="05b7e697-25f1-4b22-ba7d-7539c395ac01"><td class="cell-title"><a href="https://www.notion.so/05b7e69725f14b22ba7d7539c395ac01">Зодиак</a></td><td class="cell-92$;"><time>@May 12, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="b53913b7-2eb7-48ef-979c-b16db6de12ce"><td class="cell-title"><a href="https://www.notion.so/b53913b72eb748ef979cb16db6de12ce">Гаттака</a></td><td class="cell-92$;"><time>@May 8, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="ca2310a5-0cd9-433a-86c0-c0f9cdaf4711"><td class="cell-title"><a href="https://www.notion.so/ca2310a50cd9433a86c0c0f9cdaf4711">Майор Гром: Чумной Доктор</a></td><td class="cell-92$;"><time>@May 5, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="cec762ce-5e47-48ea-9c8b-ac5611680e4f"><td class="cell-title"><a href="https://www.notion.so/cec762ce5e4748ea9c8bac5611680e4f">Дюна Ходоровского</a></td><td class="cell-92$;"><time>@May 4, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="29fc750e-0d02-42ca-b860-2d0e7423b52f"><td class="cell-title"><a href="https://www.notion.so/29fc750e0d0242cab8602d0e7423b52f">Форма голоса</a></td><td class="cell-92$;"><time>@May 3, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="a01abd2a-0e47-4237-9b04-1252d6030f74"><td class="cell-title"><a href="https://www.notion.so/a01abd2a0e4742379b041252d6030f74">Служанка</a></td><td class="cell-92$;"><time>@April 29, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="c38e3c47-e01b-44e4-9a2b-d8b240f371e3"><td class="cell-title"><a href="https://www.notion.so/c38e3c47e01b44e49a2bd8b240f371e3">Житие Брайана по Монти Пайтону</a></td><td class="cell-92$;"><time>@April 24, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="0ad0ee9a-9477-4757-9be8-7f0c439563f9"><td class="cell-title"><a href="https://www.notion.so/0ad0ee9a947747579be87f0c439563f9">Водная жизнь</a></td><td class="cell-92$;"><time>@April 24, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="8d1bf0d0-e14f-4979-a5f9-52d8f1953558"><td class="cell-title"><a href="https://www.notion.so/8d1bf0d0e14f4979a5f952d8f1953558">Душа</a></td><td class="cell-92$;"><time>@April 11, 2021</time></td><td class="cell-rzlg">Показывал Лиде</td></tr><tr id="4664c868-4c70-4962-a533-eb5c416d9f19"><td class="cell-title"><a href="https://www.notion.so/4664c8684c704962a533eb5c416d9f19">Труп невесты</a></td><td class="cell-92$;"><time>@April 5, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="e78f57f0-4ea7-4bfb-8abc-e088008600e4"><td class="cell-title"><a href="https://www.notion.so/e78f57f04ea74bfb8abce088008600e4">Олдбой</a></td><td class="cell-92$;"><time>@April 2, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="78ca35c1-ed9c-458b-9105-3fe880fc005a"><td class="cell-title"><a href="https://www.notion.so/78ca35c1ed9c458b91053fe880fc005a">Шоу Трумана</a></td><td class="cell-92$;"><time>@April 1, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="8aa4efa3-1f3c-4bc2-9f1a-9609ba40fcd5"><td class="cell-title"><a href="https://www.notion.so/8aa4efa31f3c4bc29f1a9609ba40fcd5">Спасти рядового Райана</a></td><td class="cell-92$;"><time>@March 25, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="4e18be13-f675-4d35-a45e-8d656ccc9f6f"><td class="cell-title"><a href="https://www.notion.so/Palm-Springs-4e18be13f6754d35a45e8d656ccc9f6f">Palm Springs</a></td><td class="cell-92$;"><time>@March 24, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="561dcee5-b7c1-46c4-918b-cd96b7bb23ed"><td class="cell-title"><a href="https://www.notion.so/The-Social-Dilemma-561dcee5b7c146c4918bcd96b7bb23ed">The Social Dilemma</a></td><td class="cell-92$;"><time>@March 21, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="594dbd1b-d020-4f14-8e5e-5ebec14969dc"><td class="cell-title"><a href="https://www.notion.so/594dbd1bd0204f148e5e5ebec14969dc">Лига Справедливости Зака Снайдера</a></td><td class="cell-92$;"><time>@March 20, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="c6d1ab7e-7d67-4031-8bd1-b34b7fcd1d4b"><td class="cell-title"><a href="https://www.notion.so/c6d1ab7e7d6740318bd1b34b7fcd1d4b">Авиатор</a></td><td class="cell-92$;"><time>@March 6, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="10eed9e8-7729-4127-9fc5-f6070f1f880b"><td class="cell-title"><a href="https://www.notion.so/10eed9e8772941279fc5f6070f1f880b">Вики, Кристина, Барселона</a></td><td class="cell-92$;"><time>@March 2, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="66d22165-e059-41f0-8354-771f948e8f97"><td class="cell-title"><a href="https://www.notion.so/66d22165e05941f08354771f948e8f97">Душа</a></td><td class="cell-92$;"><time>@February 21, 2021</time></td><td class="cell-rzlg">Нихуенно</td></tr><tr id="f521881f-e58c-4cbf-8296-ccdf3aa9279a"><td class="cell-title"><a href="https://www.notion.so/f521881fe58c4cbf8296ccdf3aa9279a">Парфюмер</a></td><td class="cell-92$;"><time>@February 19, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="7ec0aada-fe26-4238-8325-5d55fb044f5e"><td class="cell-title"><a href="https://www.notion.so/1984-7ec0aadafe26423883255d55fb044f5e">Чудо Женщина: 1984</a></td><td class="cell-92$;"><time>@February 13, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="f1aeab22-5a47-40a2-a486-2bc3847547a8"><td class="cell-title"><a href="https://www.notion.so/f1aeab225a4740a2a4862bc3847547a8">Код да Винчи</a></td><td class="cell-92$;"><time>@January 15, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="12fed468-56f6-44b0-b9b9-9cdf7ed16970"><td class="cell-title"><a href="https://www.notion.so/2-12fed46856f644b0b9b99cdf7ed16970">Борат 2</a></td><td class="cell-92$;"><time>@January 14, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="154685e9-9104-4775-a442-e9cb909289bc"><td class="cell-title"><a href="https://www.notion.so/154685e991044775a442e9cb909289bc">Терминал</a></td><td class="cell-92$;"><time>@January 12, 2021</time></td><td class="cell-rzlg"></td></tr><tr id="56b73e7d-38f1-4061-8deb-ea52c9e7f3b5"><td class="cell-title"><a href="https://www.notion.so/56b73e7d38f140618debea52c9e7f3b5">Общество мертвых поэтов</a></td><td class="cell-92$;"><time>@January 7, 2021</time></td><td class="cell-rzlg">Класс</td></tr><tr id="ca605a95-1e30-40ca-b78c-a467bd4936c6"><td class="cell-title"><a href="https://www.notion.so/ca605a951e3040cab78ca467bd4936c6">Амели</a></td><td class="cell-92$;"><time>@January 1, 2021</time></td><td class="cell-rzlg">Класс</td></tr><tr id="fe165228-9018-4202-b5a8-eae2dfc7c9b9"><td class="cell-title"><a href="https://www.notion.so/fe16522890184202b5a8eae2dfc7c9b9">Назад в будущее</a></td><td class="cell-92$;"><time>@December 31, 2020</time></td><td class="cell-rzlg">Пересматривал</td></tr><tr id="63247776-42bb-4a5b-9fca-5331ef3f9925"><td class="cell-title"><a href="https://www.notion.so/6324777642bb4a5b9fca5331ef3f9925">Довод</a></td><td class="cell-92$;"><time>@December 26, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="13607605-82ef-407f-ad22-e4967d43facf"><td class="cell-title"><a href="https://www.notion.so/Ford-Ferrari-1360760582ef407fad22e4967d43facf">Ford против Ferrari</a></td><td class="cell-92$;"><time>@December 12, 2020</time></td><td class="cell-rzlg">Пересматривал</td></tr><tr id="69237c4a-8f66-4416-8201-f511e3a6e936"><td class="cell-title"><a href="https://www.notion.so/Sweet-November-69237c4a8f6644168201f511e3a6e936">Sweet November</a></td><td class="cell-92$;"><time>@December 12, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="3ad4f377-a552-4612-a01d-2218b1200188"><td class="cell-title"><a href="https://www.notion.so/Project-Power-3ad4f377a5524612a01d2218b1200188">Project Power</a></td><td class="cell-92$;"><time>@December 4, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="da09bafe-4908-48b7-855a-a67098d282ae"><td class="cell-title"><a href="https://www.notion.so/da09bafe490848b7855aa67098d282ae">Поезд на Дарджилинг</a></td><td class="cell-92$;"><time>@November 30, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="aa3eddfa-de4a-413d-a097-b2ae229c31c8"><td class="cell-title"><a href="https://www.notion.so/aa3eddfade4a413da097b2ae229c31c8">Миллионер из трущоб</a></td><td class="cell-92$;"><time>@November 19, 2020</time></td><td class="cell-rzlg">Пересматривал</td></tr><tr id="b90bbe01-c467-420a-aa95-cfb3d3f0ecda"><td class="cell-title"><a href="https://www.notion.so/b90bbe01c467420aaa95cfb3d3f0ecda">Красотка</a></td><td class="cell-92$;"><time>@November 8, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="72bd7f02-6f57-404a-89f7-ee9316a25b09"><td class="cell-title"><a href="https://www.notion.so/72bd7f026f57404a89f7ee9316a25b09">Коралина</a></td><td class="cell-92$;"><time>@October 19, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="1f45179d-2e6e-482f-bcd9-1df39590594b"><td class="cell-title"><a href="https://www.notion.so/1f45179d2e6e482fbcd91df39590594b">Борат</a></td><td class="cell-92$;"><time>@October 2, 2020</time></td><td class="cell-rzlg">Поржал, годно</td></tr><tr id="380b3992-5db4-40ee-9b37-0f41eea67139"><td class="cell-title"><a href="https://www.notion.so/380b39925db440ee9b370f41eea67139">Энола Холмс</a></td><td class="cell-92$;"><time>@September 23, 2020</time></td><td class="cell-rzlg">Прикольно, мне понравилось</td></tr><tr id="accb2b37-9c6e-46ab-835d-f159f1820ad0"><td class="cell-title"><a href="https://www.notion.so/1917-accb2b379c6e46ab835df159f1820ad0">1917</a></td><td class="cell-92$;"><time>@September 20, 2020</time></td><td class="cell-rzlg">Пересматривал с семьей</td></tr><tr id="bfdfe3c0-29f2-4d2f-b8a1-0f7555b762ae"><td class="cell-title"><a href="https://www.notion.so/bfdfe3c029f24d2fb8a10f7555b762ae">Смертельное влечение</a></td><td class="cell-92$;"><time>@September 10, 2020</time></td><td class="cell-rzlg">Мне понравилось, поржал в нескольких моментах, годный черный юмор</td></tr><tr id="01573abe-a206-438c-97ec-febbea76a189"><td class="cell-title"><a href="https://www.notion.so/01573abea206438c97ecfebbea76a189">Корпорация Монстров</a></td><td class="cell-92$;"><time>@August 26, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="04c8102d-0410-459d-a21b-63efd4c6ae8a"><td class="cell-title"><a href="https://www.notion.so/04c8102d0410459da21b63efd4c6ae8a">Изгой</a></td><td class="cell-92$;"><time>@August 25, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="3b9538c9-2bef-43f0-a129-784aabacdb65"><td class="cell-title"><a href="https://www.notion.so/3b9538c92bef43f0a129784aabacdb65">Путешествие Гектора в поисках счастья</a></td><td class="cell-92$;"><time>@July 11, 2020</time></td><td class="cell-rzlg">Так и не понял в чем он счастье нашел</td></tr><tr id="6a59a7a0-d7f8-420d-a200-b7db7d6ceddb"><td class="cell-title"><a href="https://www.notion.so/6a59a7a0d7f8420da200b7db7d6ceddb">Дитя погоды</a></td><td class="cell-92$;"><time>@July 6, 2020</time></td><td class="cell-rzlg">Красивая анимешка</td></tr><tr id="69d52936-45fe-41c6-8a99-098915691d8a"><td class="cell-title"><a href="https://www.notion.so/Eurovision-Song-Contest-The-Story-of-Fire-Saga-69d5293645fe41c68a99098915691d8a">Eurovision Song Contest: The Story of Fire Saga</a></td><td class="cell-92$;"><time>@July 4, 2020</time></td><td class="cell-rzlg">Люблю Исландию</td></tr><tr id="85e7d2dd-761e-4fc4-968c-4035a9c4cdbf"><td class="cell-title"><a href="https://www.notion.so/85e7d2dd761e4fc4968c4035a9c4cdbf">Боруто: Фильм Наруто</a></td><td class="cell-92$;"><time>@May 29, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="3d427db1-d460-4e9d-8558-200a00515e44"><td class="cell-title"><a href="https://www.notion.so/3d427db1d4604e9d8558200a00515e44">Горбатая гора</a></td><td class="cell-92$;"><time>@May 25, 2020</time></td><td class="cell-rzlg">T_T</td></tr><tr id="c3138381-ca91-4069-b023-f96f1da24347"><td class="cell-title"><a href="https://www.notion.so/c3138381ca914069b023f96f1da24347">Малхолланд Драйв</a></td><td class="cell-92$;"><time>@May 23, 2020</time></td><td class="cell-rzlg">Нихуя не понятно, но очень интересно. Фильм держит в напряжении, но сюжет я пока не разгадал, хочу попытаться сам, буду смотреть во второй раз</td></tr><tr id="a514ba9c-b2da-44f8-b70b-732aa078559a"><td class="cell-title"><a href="https://www.notion.so/a514ba9cb2da44f8b70b732aa078559a">Под Сильвер-Лэйк</a></td><td class="cell-92$;"><time>@May 17, 2020</time></td><td class="cell-rzlg">Расчитывал на годные загадки и распутывания заговоров, получил арт-хаус с наркоманией и такой себе развязкой</td></tr><tr id="20671873-4dad-4867-ad5d-ec89b187db8f"><td class="cell-title"><a href="https://www.notion.so/206718734dad4867ad5dec89b187db8f">Форест Гамп</a></td><td class="cell-92$;"><time>@May 16, 2020</time></td><td class="cell-rzlg">Очень классный фильм, про удивительные приключения, удивительного человека</td></tr><tr id="87cdf7d1-8109-4270-8441-d4bff8ff5f14"><td class="cell-title"><a href="https://www.notion.so/87cdf7d1810942708441d4bff8ff5f14">Монти Пайтон и Священный Грааль</a></td><td class="cell-92$;"><time>@April 19, 2020</time></td><td class="cell-rzlg">Пересматривал эту офигенскую комедию. Да, некоторые шутеечки выглядят старомодно, но есть и те от которых ржу до сих пор</td></tr><tr id="6bef1ba6-088e-4bb4-8259-7065abb56724"><td class="cell-title"><a href="https://www.notion.so/6bef1ba6088e4bb482597065abb56724">Хищные птицы</a></td><td class="cell-92$;"><time>@April 15, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="fcbb392e-7e18-4c48-857d-c8002be3ad69"><td class="cell-title"><a href="https://www.notion.so/Z-fcbb392e7e184c48857dc8002be3ad69">Zомбилэнд: Контрольный выстрел</a></td><td class="cell-92$;"><time>@March 21, 2020</time></td><td class="cell-rzlg">Фегня</td></tr><tr id="8a017e39-122b-47f7-92be-7398568d4c60"><td class="cell-title"><a href="https://www.notion.so/8a017e39122b47f792be7398568d4c60">Звездные Войны: Скайуокер. Восход</a></td><td class="cell-92$;"><time>@March 19, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="2a2fef8a-52c5-4cf6-beaa-9fa9c5fe9759"><td class="cell-title"><a href="https://www.notion.so/2a2fef8a52c54cf6beaa9fa9c5fe9759">Я иду искать</a></td><td class="cell-92$;"><time>@March 18, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="d878756b-fbd5-4f98-aeea-01b49b3466ef"><td class="cell-title"><a href="https://www.notion.so/d878756bfbd54f98aeea01b49b3466ef">Джентльмены</a></td><td class="cell-92$;"><time>@March 9, 2020</time></td><td class="cell-rzlg">Да, настолько охуенный, что я пошел во второй раз</td></tr><tr id="22e9e49a-07ec-4024-94c7-419bdc439642"><td class="cell-title"><a href="https://www.notion.so/22e9e49a07ec402494c7419bdc439642">Доктор Сон</a></td><td class="cell-92$;"><time>@February 25, 2020</time></td><td class="cell-rzlg">Фегня</td></tr><tr id="5c250f69-c1e4-4a25-ab7e-84ba5680ea38"><td class="cell-title"><a href="https://www.notion.so/5c250f69c1e44a25ab7e84ba5680ea38">Джентльмены</a></td><td class="cell-92$;"><time>@February 23, 2020</time></td><td class="cell-rzlg">Охуенный, стильный, крутой фильм</td></tr><tr id="3e848b90-50d5-4fff-93cf-6fea7c0860a8"><td class="cell-title"><a href="https://www.notion.so/2-3e848b9050d54fff93cf6fea7c0860a8">Холодное сердце 2</a></td><td class="cell-92$;"><time>@February 15, 2020</time></td><td class="cell-rzlg"></td></tr><tr id="3952833b-ce17-423c-b0e0-272319a13d80"><td class="cell-title"><a href="https://www.notion.so/3952833bce17423cb0e0272319a13d80">Кролик Джо-Джо</a></td><td class="cell-92$;"><time>@February 10, 2020</time></td><td class="cell-rzlg">Очень понравился, в какие то моменты даже на слезу пробил</td></tr><tr id="e597ddad-ebe3-4380-86a0-898ed2249a6d"><td class="cell-title"><a href="https://www.notion.so/1917-e597ddadebe3438086a0898ed2249a6d">1917</a></td><td class="cell-92$;"><time>@February 1, 2020</time></td><td class="cell-rzlg">Мега эпичный и напряженный фильм</td></tr><tr id="fa27cf42-5317-4728-9960-8225ddfaf16a"><td class="cell-title"><a href="https://www.notion.so/fa27cf425317472899608225ddfaf16a">Брачная история</a></td><td class="cell-92$;"><time>@January 18, 2020</time></td><td class="cell-rzlg">Офигительная актерская игра</td></tr><tr id="fbe11f90-40d7-4557-b4a5-97e698ef6c7a"><td class="cell-title"><a href="https://www.notion.so/fbe11f9040d74557b4a597e698ef6c7a">Зеленая миля</a></td><td class="cell-92$;"><time>@January 17, 2020</time></td><td class="cell-rzlg"></td></tr></tbody></table></div><h2 id="aadca44d-0a41-4193-bb36-3c54716b1d30" class="block-color-teal">Фильмы</h2><ul id="c1ad309f-fae0-4758-b560-138bfeab5ca9" class="bulleted-list"><li style="list-style-type:disc">Мэрри Поппинс</li></ul><ul id="b1b91a8d-0aad-401f-8822-d2b80de3830c" class="bulleted-list"><li style="list-style-type:disc">Пианист</li></ul><ul id="5adaa8af-b9fc-4f7a-a8f5-d8e03156c9a0" class="bulleted-list"><li style="list-style-type:disc">Пролетая над гнездом Кукушки</li></ul><ul id="29b91e93-d027-4459-baed-a6f148c6b516" class="bulleted-list"><li style="list-style-type:disc">Вавилон</li></ul><ul id="c4abae98-7282-4cb3-824f-daddb4db87c7" class="bulleted-list"><li style="list-style-type:disc">Мужское — женское</li></ul><ul id="93e9b56e-82bc-4a04-8ff0-ca8c2579544b" class="bulleted-list"><li style="list-style-type:disc">Blaire ivory</li></ul><ul id="5af2a090-4a48-4671-9574-7412fa8971d7" class="bulleted-list"><li style="list-style-type:disc">Я потерял своё тело</li></ul><ul id="f936cf84-a86f-46e7-bf72-64d4ab381c83" class="bulleted-list"><li style="list-style-type:disc">Мальчик в полосатой пижаме</li></ul><ul id="68e662d8-8641-4559-9c89-60865c85665f" class="bulleted-list"><li style="list-style-type:disc">Приключения Бакару Банзая</li></ul><ul id="e3cc8709-328d-49e8-b6be-6fd88ca08e51" class="bulleted-list"><li style="list-style-type:disc">Таксист</li></ul><ul id="d346f776-43db-463a-993c-e9bfe5676c8f" class="bulleted-list"><li style="list-style-type:disc">Не грози южному централу</li></ul><ul id="c9fe9b88-893a-49d9-9698-fc5153ce19ea" class="bulleted-list"><li style="list-style-type:disc">Маленькие женщины</li></ul><ul id="237fb627-b751-4382-8d35-9c90ecc918a1" class="bulleted-list"><li style="list-style-type:disc">Грязные танцы</li></ul><ul id="0c17aeb9-9c0d-41dc-a816-eb6880fde092" class="bulleted-list"><li style="list-style-type:disc">Человек, которого не было</li></ul><ul id="e3e81deb-e23b-49c7-a38b-69de1ed3b88e" class="bulleted-list"><li style="list-style-type:disc">Восемь с половиной</li></ul><ul id="6b98df37-2f5a-45b2-995f-64752c70da10" class="bulleted-list"><li style="list-style-type:disc">Инопланетянин</li></ul><ul id="383911ec-ad17-4784-a3a3-b50e2e1c22de" class="bulleted-list"><li style="list-style-type:disc">Список Шиндлера</li></ul><ul id="8ddf5741-e691-4f20-b3cc-eae503ec81ab" class="bulleted-list"><li style="list-style-type:disc">Крадущийся тигр, затаившийся дракон</li></ul><ul id="96125a1f-4f39-4192-95dc-0a8aefd38850" class="bulleted-list"><li style="list-style-type:disc">Отрочество</li></ul><ul id="b1f671e7-e156-4b34-9223-fb8ee21dc6ea" class="bulleted-list"><li style="list-style-type:disc">Рома</li></ul><ul id="8b36c8c1-c2ac-43d4-bad5-30155a9de5ff" class="bulleted-list"><li style="list-style-type:disc">Эта прекрасная жизнь</li></ul><ul id="7df85020-954a-4228-b5a5-1290b8dc2302" class="bulleted-list"><li style="list-style-type:disc">Поле его мечты</li></ul><ul id="9a5a999b-2e06-4ccc-b3b0-bbb9a04bbdd0" class="bulleted-list"><li style="list-style-type:disc">Отверженные</li></ul><ul id="6618e070-d6b5-4a53-ae2d-85b91be4ad77" class="bulleted-list"><li style="list-style-type:disc">Трейнспоттинг</li></ul><ul id="b9ff29b1-9ee6-455f-baaf-17023c10077d" class="bulleted-list"><li style="list-style-type:disc">12 разгневанных мужчин</li></ul><ul id="c3d1fbb4-3020-4e29-a373-5f264c8d4a0a" class="bulleted-list"><li style="list-style-type:disc">Белое солнце пустыни</li></ul><ul id="3d0d922c-a53e-4e8f-a0e6-498ab9dca1e4" class="bulleted-list"><li style="list-style-type:disc">Мой кузен Винни</li></ul><ul id="4fb8de0d-ffcc-49bd-bd7d-82e7fb34a442" class="bulleted-list"><li style="list-style-type:disc">Подержанные львы</li></ul><ul id="136857e6-cfb7-489b-9d3e-658ec347a307" class="bulleted-list"><li style="list-style-type:disc">Офисное пространство</li></ul><ul id="da367333-514c-4eaa-bbdf-01a4aa1aeb94" class="bulleted-list"><li style="list-style-type:disc">Индиана Джонс</li></ul><ul id="bef5065d-fdf5-4ed3-857b-508df23c27a2" class="bulleted-list"><li style="list-style-type:disc">Военные игры</li></ul><ul id="002da650-8115-4680-9a52-a942380aed9e" class="bulleted-list"><li style="list-style-type:disc">Запределье (2006 г.)</li></ul><ul id="9cce7a2f-dfd0-42b9-b825-0fb40a7b4442" class="bulleted-list"><li style="list-style-type:disc">Вам письмо</li></ul><ul id="ca0eed0e-6122-4bf8-a3d1-d17774f8e5e2" class="bulleted-list"><li style="list-style-type:disc">Жизнь прекрасна</li></ul><ul id="819bd2f8-1dcb-48e7-98b2-1b20f7c27269" class="bulleted-list"><li style="list-style-type:disc">Жестокие игры</li></ul><ul id="ff88dc89-ff08-4f9f-9a8a-5fde4607b2ef" class="bulleted-list"><li style="list-style-type:disc">Основной инстинкт</li></ul><ul id="e113fead-ac04-433a-97d1-5c8f06195677" class="bulleted-list"><li style="list-style-type:disc">Метод Хитча</li></ul><ul id="f22a46d3-e3af-4d66-af52-6b76fcd7dd47" class="bulleted-list"><li style="list-style-type:disc">Цена страсти</li></ul><p id="f9c48e39-b140-4051-8ac9-7d2168d6e1f2" class="">
+</p></div></article></body></html>
