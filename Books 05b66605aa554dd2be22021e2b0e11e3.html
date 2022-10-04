@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Books</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="05b66605-aa55-4dd2-be22-021e2b0e11e3" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 33.040000000000006%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📕</span></div><h1 class="page-title">Books</h1></header><div class="page-body"><div id="0bb2502e-1ffd-492c-a2ac-4c7a6af4bb8b" class="collection-content"><h4 class="collection-title">Reading List</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Author</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Start</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>End</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Review</th></tr></thead><tbody><tr id="96e671ea-3fff-40ea-8613-3bac2739be97"><td class="cell-title"><a href="https://www.notion.so/96e671ea3fff40ea86133bac2739be97">Второму игроку приготовиться</a></td><td class="cell-|rUh">Эрнест Клайн</td><td class="cell-Wt{D"><time>@August 22, 2022</time></td><td class="cell-My*&#x27;"></td><td class="cell-0*Ld"></td></tr><tr id="0c26be3c-2557-4bee-9709-8ca2ffdc3bbf"><td class="cell-title"><a href="https://www.notion.so/0c26be3c25574bee97098ca2ffdc3bbf">Повелитель мух</a></td><td class="cell-|rUh">Уильям Голдинг</td><td class="cell-Wt{D"></td><td class="cell-My*&#x27;"><time>@August 16, 2022</time></td><td class="cell-0*Ld"></td></tr><tr id="92d1aa67-da2d-447c-8470-1fc96e818882"><td class="cell-title"><a href="https://www.notion.so/11-22-63-92d1aa67da2d447c84701fc96e818882">11/22/63</a></td><td class="cell-|rUh">Стивен Кинг</td><td class="cell-Wt{D"><time>@March 29, 2022</time></td><td class="cell-My*&#x27;"><time>@April 27, 2022</time></td><td class="cell-0*Ld"></td></tr><tr id="80e960df-3dec-48e6-af17-dd1a97338c33"><td class="cell-title"><a href="https://www.notion.so/80e960df3dec48e6af17dd1a97338c33">Приключения Гекльберри Финна</a></td><td class="cell-|rUh">Марк Твен</td><td class="cell-Wt{D"><time>@March 5, 2022</time></td><td class="cell-My*&#x27;"><time>@March 26, 2022</time></td><td class="cell-0*Ld"></td></tr><tr id="3123b0cc-1426-410f-8141-f0a2b48394a5"><td class="cell-title"><a href="https://www.notion.so/22-3123b0cc1426410f8141f0a2b48394a5">Уловка-22</a></td><td class="cell-|rUh">Джозеф Хеллер</td><td class="cell-Wt{D"><time>@February 12, 2022</time></td><td class="cell-My*&#x27;"></td><td class="cell-0*Ld"></td></tr><tr id="4512e174-6082-4688-af28-aeb7cfee8a58"><td class="cell-title"><a href="https://www.notion.so/4512e17460824688af28aeb7cfee8a58">Рай где-то рядом</a></td><td class="cell-|rUh">Фэнни Флэгг</td><td class="cell-Wt{D"><time>@January 13, 2022</time></td><td class="cell-My*&#x27;"><time>@February 11, 2022</time></td><td class="cell-0*Ld"></td></tr><tr id="f3d805ea-2daa-4db1-8d10-67cce4d7ff6e"><td class="cell-title"><a href="https://www.notion.so/f3d805ea2daa4db18d1067cce4d7ff6e">Белый клык</a></td><td class="cell-|rUh">Джек Лондон</td><td class="cell-Wt{D"><time>@January 12, 2022</time></td><td class="cell-My*&#x27;"><time>@January 12, 2022</time></td><td class="cell-0*Ld"></td></tr><tr id="f277c830-cc37-42d2-b300-119ec71ffcdd"><td class="cell-title"><a href="https://www.notion.so/f277c830cc3742d2b300119ec71ffcdd">Зов ктулху (рассказ)</a></td><td class="cell-|rUh">Говард Лавкрафт</td><td class="cell-Wt{D"><time>@January 3, 2022</time></td><td class="cell-My*&#x27;"><time>@January 9, 2022</time></td><td class="cell-0*Ld"></td></tr><tr id="53c483c1-84ae-49a3-82ee-03ce175259a9"><td class="cell-title"><a href="https://www.notion.so/53c483c184ae49a382ee03ce175259a9">Дракула</a></td><td class="cell-|rUh">Брэм Стокер</td><td class="cell-Wt{D"><time>@December 10, 2021</time></td><td class="cell-My*&#x27;"><time>@December 28, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="6008cb32-bb92-47d3-bc7c-249c9d97c886"><td class="cell-title"><a href="https://www.notion.so/6008cb32bb9247d3bc7c249c9d97c886">Скотный двор</a></td><td class="cell-|rUh">Джордж Оруэлл</td><td class="cell-Wt{D"><time>@November 24, 2021</time></td><td class="cell-My*&#x27;"><time>@November 24, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="3dc80324-7c03-438c-9b9f-66b5dd8ec00a"><td class="cell-title"><a href="https://www.notion.so/3dc803247c03438c9b9f66b5dd8ec00a">Девушка испорченная интернетом и есть Призванный Герой?!</a></td><td class="cell-|rUh">Элиезер Юдковский</td><td class="cell-Wt{D"><time>@November 21, 2021</time></td><td class="cell-My*&#x27;"><time>@November 21, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="6a1b9002-d45b-4d30-a127-5bae734f7c3d"><td class="cell-title"><a href="https://www.notion.so/6a1b9002d45b4d30a1275bae734f7c3d">Темные начала. Янтарный телескоп</a></td><td class="cell-|rUh">Филип Пулман</td><td class="cell-Wt{D"><time>@October 13, 2021</time></td><td class="cell-My*&#x27;"><time>@November 16, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="55d8a6e2-94ec-4590-ac51-897b214ee5ac"><td class="cell-title"><a href="https://www.notion.so/55d8a6e294ec4590ac51897b214ee5ac">Темные начала. Чудесный нож</a></td><td class="cell-|rUh">Филип Пулман</td><td class="cell-Wt{D"><time>@September 25, 2021</time></td><td class="cell-My*&#x27;"><time>@October 8, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="386daf23-4c34-4faa-aff4-b9e171f5cb99"><td class="cell-title"><a href="https://www.notion.so/386daf234c344faaaff4b9e171f5cb99">Темные начала. Северное сияние</a></td><td class="cell-|rUh">Филип Пулман</td><td class="cell-Wt{D"><time>@September 13, 2021</time></td><td class="cell-My*&#x27;"><time>@September 25, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="7f448e0d-be8f-4ed3-bd36-57b39ed0ee04"><td class="cell-title"><a href="https://www.notion.so/7f448e0dbe8f4ed3bd3657b39ed0ee04">Хюгге</a></td><td class="cell-|rUh">Майк Викинг</td><td class="cell-Wt{D"><time>@August 29, 2021</time></td><td class="cell-My*&#x27;"></td><td class="cell-0*Ld"></td></tr><tr id="e24cee91-e236-43b2-8906-b6c24ca89f80"><td class="cell-title"><a href="https://www.notion.so/e24cee91e23643b28906b6c24ca89f80">Атака титанов</a></td><td class="cell-|rUh"></td><td class="cell-Wt{D"></td><td class="cell-My*&#x27;"><time>@April 14, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="7ca36c4e-3818-49f3-86e5-b5502603f502"><td class="cell-title"><a href="https://www.notion.so/Sapiens-7ca36c4e381849f386e5b5502603f502">Sapiens</a></td><td class="cell-|rUh">Юваль Ной Харари</td><td class="cell-Wt{D"><time>@March 22, 2021</time></td><td class="cell-My*&#x27;"><time>@September 10, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="66617bf2-5b5f-4d08-98cc-1136a1058066"><td class="cell-title"><a href="https://www.notion.so/66617bf25b5f4d0898cc1136a1058066">Дюна</a></td><td class="cell-|rUh">Херберт Фрэнк</td><td class="cell-Wt{D"><time>@February 13, 2021</time></td><td class="cell-My*&#x27;"><time>@March 18, 2021</time></td><td class="cell-0*Ld"></td></tr><tr id="8e1df086-085f-426d-a61a-a82d8ffc680a"><td class="cell-title"><a href="https://www.notion.so/8e1df086085f426da61aa82d8ffc680a">Как изобрести все</a></td><td class="cell-|rUh">Райан Норт</td><td class="cell-Wt{D"><time>@January 1, 2021</time></td><td class="cell-My*&#x27;"></td><td class="cell-0*Ld"></td></tr><tr id="25ecd8f4-21cd-4ca1-9f53-e5c0fd2e9850"><td class="cell-title"><a href="https://www.notion.so/25ecd8f421cd4ca19f53e5c0fd2e9850">Ночной портье</a></td><td class="cell-|rUh">Ирвин Шоу</td><td class="cell-Wt{D"><time>@December 14, 2020</time></td><td class="cell-My*&#x27;"><time>@December 20, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="c1c77a8a-f2d2-490b-9907-c4661386f4be"><td class="cell-title"><a href="https://www.notion.so/c1c77a8af2d2490b9907c4661386f4be">Праздник, который всегда с тобой</a></td><td class="cell-|rUh">Эрнест Хэмингуэй</td><td class="cell-Wt{D"><time>@December 12, 2020</time></td><td class="cell-My*&#x27;"><time>@December 13, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="c94e07b5-4368-40f5-b963-b62eb5cab8ad"><td class="cell-title"><a href="https://www.notion.so/c94e07b5436840f5b963b62eb5cab8ad">Игры, в которые играют люди</a></td><td class="cell-|rUh">Эрик Берн</td><td class="cell-Wt{D"><time>@December 2, 2020</time></td><td class="cell-My*&#x27;"></td><td class="cell-0*Ld"></td></tr><tr id="09ec7de3-a18a-418c-9ee0-be61a8b9b262"><td class="cell-title"><a href="https://www.notion.so/09ec7de3a18a418c9ee0be61a8b9b262">Жемчужина</a></td><td class="cell-|rUh">Джон Стейнбек</td><td class="cell-Wt{D"><time>@November 21, 2020</time></td><td class="cell-My*&#x27;"><time>@November 25, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="7e2777f3-fa10-48d6-8b49-d10fd1d4449a"><td class="cell-title"><a href="https://www.notion.so/7e2777f3fa1048d68b49d10fd1d4449a">Игра Эндера</a></td><td class="cell-|rUh">Орсон Скотт Кард</td><td class="cell-Wt{D"><time>@November 13, 2020</time></td><td class="cell-My*&#x27;"><time>@November 17, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="43197500-66e0-4a65-af84-5f2c5e3f4ba6"><td class="cell-title"><a href="https://www.notion.so/4319750066e04a65af845f2c5e3f4ba6">Ложная слепота</a></td><td class="cell-|rUh">Питер Уоттс</td><td class="cell-Wt{D"><time>@August 31, 2020</time></td><td class="cell-My*&#x27;"><time>@November 3, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="8ab76ed2-af65-443b-a6ec-582460214039"><td class="cell-title"><a href="https://www.notion.so/8ab76ed2af65443ba6ec582460214039">Я умею прыгать через лужи</a></td><td class="cell-|rUh">Алан Маршалл</td><td class="cell-Wt{D"><time>@August 15, 2020</time></td><td class="cell-My*&#x27;"><time>@August 29, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="5eb45589-87b3-4859-9371-44ad18cf3b1c"><td class="cell-title"><a href="https://www.notion.so/5eb4558987b34859937144ad18cf3b1c">Десять негритят</a></td><td class="cell-|rUh">Агата Кристи</td><td class="cell-Wt{D"><time>@August 9, 2020</time></td><td class="cell-My*&#x27;"><time>@August 14, 2020</time></td><td class="cell-0*Ld">Легко читается, очень интересно</td></tr><tr id="6e25df97-135f-4957-8c2e-b9e95a8055cb"><td class="cell-title"><a href="https://www.notion.so/6e25df97135f49578c2eb9e95a8055cb">Сто лет одиночества</a></td><td class="cell-|rUh">Габриэль Гарсия Маркес</td><td class="cell-Wt{D"><time>@May 23, 2020</time></td><td class="cell-My*&#x27;"><time>@August 7, 2020</time></td><td class="cell-0*Ld">Слиииишком затянуто как то все, очень долго читается, никак не мог себя заставить дочитать</td></tr><tr id="5550a44e-66ba-40e6-b6a5-a9d4851afb71"><td class="cell-title"><a href="https://www.notion.so/5550a44e66ba40e6b6a5a9d4851afb71">Цветы для Элджернона</a></td><td class="cell-|rUh">Дэниел Киз</td><td class="cell-Wt{D"><time>@May 18, 2020</time></td><td class="cell-My*&#x27;"><time>@May 21, 2020</time></td><td class="cell-0*Ld">Очень интересно наблюдать за изменениями в мыслях и действиях главного персонажа</td></tr><tr id="a9b8a799-64d8-4fcc-aba7-e1d1bf98103a"><td class="cell-title"><a href="https://www.notion.so/a9b8a79964d84fccaba7e1d1bf98103a">Война миров</a></td><td class="cell-|rUh">Герберт Уэллс</td><td class="cell-Wt{D"><time>@May 10, 2020</time></td><td class="cell-My*&#x27;"><time>@May 17, 2020</time></td><td class="cell-0*Ld">Интересно описана реакция человечества на вторжение марсиан в 19 веке</td></tr><tr id="f3ad4bf7-85ef-4dfd-bd0b-a34e5c9fe4cb"><td class="cell-title"><a href="https://www.notion.so/f3ad4bf785ef4dfdbd0ba34e5c9fe4cb">Жареные зеленые помидоры в кафе &quot;Полустанок&quot;</a></td><td class="cell-|rUh">Фэнни Флэгг</td><td class="cell-Wt{D"><time>@April 23, 2020</time></td><td class="cell-My*&#x27;"><time>@May 10, 2020</time></td><td class="cell-0*Ld">Действительно классные персонажи и атмосфера. Рассказ ведется как обычная беседа, не соблюдается хронология</td></tr><tr id="334ad0eb-8917-47c8-a049-8d36e9cc64c6"><td class="cell-title"><a href="https://www.notion.so/334ad0eb891747c8a0498d36e9cc64c6">Первому игроку приготовиться</a></td><td class="cell-|rUh">Эрнест Клайн</td><td class="cell-Wt{D"><time>@April 14, 2020</time></td><td class="cell-My*&#x27;"><time>@April 18, 2020</time></td><td class="cell-0*Ld">Жутко хочется поиграть в такую игру, всегда мечтал</td></tr><tr id="b0cc0f88-5199-4602-bd09-4bcca2e1e5e6"><td class="cell-title"><a href="https://www.notion.so/b0cc0f8851994602bd094bcca2e1e5e6">Приключения Тома Сойера</a></td><td class="cell-|rUh">Марк Твен</td><td class="cell-Wt{D"><time>@March 29, 2020</time></td><td class="cell-My*&#x27;"><time>@April 13, 2020</time></td><td class="cell-0*Ld">Невольно вспоминаешь себя в детстве и проникаешься пониманием к выходкам этих детей</td></tr><tr id="22ea0eb6-6817-4b16-b741-522c3437bcf4"><td class="cell-title"><a href="https://www.notion.so/22ea0eb668174b16b741522c3437bcf4">Чистый код</a></td><td class="cell-|rUh">Роберт Мартин</td><td class="cell-Wt{D"><time>@March 5, 2020</time></td><td class="cell-My*&#x27;"></td><td class="cell-0*Ld"></td></tr><tr id="3be8bb76-4c7f-4046-9b35-0a40790a5193"><td class="cell-title"><a href="https://www.notion.so/3be8bb764c7f40469b350a40790a5193">Вы, Конечно, Шутите, Мистер Фейнман</a></td><td class="cell-|rUh">Ричард Фейнман</td><td class="cell-Wt{D"><time>@March 3, 2020</time></td><td class="cell-My*&#x27;"><time>@March 25, 2020</time></td><td class="cell-0*Ld">После прочтения хочется почаще заниматься чем нибудь интересным и инвестировать в свою биографию</td></tr><tr id="10e82c8a-1ab7-4af5-9e28-c40e5f162429"><td class="cell-title"><a href="https://www.notion.so/10e82c8a1ab74af59e28c40e5f162429">Джен Эйр</a></td><td class="cell-|rUh">Шарлотта Бронте</td><td class="cell-Wt{D"><time>@February 19, 2020</time></td><td class="cell-My*&#x27;"><time>@March 1, 2020</time></td><td class="cell-0*Ld">Хорошая история о любви, гордости, принципах</td></tr><tr id="e2a6285d-375a-44b3-aaae-aff53f9c9376"><td class="cell-title"><a href="https://www.notion.so/e2a6285d375a44b3aaaeaff53f9c9376">Убить пересмешника</a></td><td class="cell-|rUh">Харпер Ли</td><td class="cell-Wt{D"><time>@February 7, 2020</time></td><td class="cell-My*&#x27;"><time>@February 14, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="3898fb11-2490-42cd-84fb-6ee4d492064e"><td class="cell-title"><a href="https://www.notion.so/3898fb11249042cd84fb6ee4d492064e">Зеленые холмы Африки</a></td><td class="cell-|rUh">Эрнест Хемингуэй</td><td class="cell-Wt{D"><time>@January 27, 2020</time></td><td class="cell-My*&#x27;"><time>@February 7, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="80e304be-62b9-4c27-bfad-c567dfb8c6a3"><td class="cell-title"><a href="https://www.notion.so/80e304be62b94c27bfadc567dfb8c6a3">Старик и море</a></td><td class="cell-|rUh">Эрнест Хемингуэй</td><td class="cell-Wt{D"><time>@January 21, 2020</time></td><td class="cell-My*&#x27;"><time>@January 24, 2020</time></td><td class="cell-0*Ld">T_T</td></tr><tr id="420d4163-3685-4793-85c3-3a942c9ad775"><td class="cell-title"><a href="https://www.notion.so/420d41633685479385c33a942c9ad775">Маленький принц</a></td><td class="cell-|rUh">Антуан де Сент-Экзюпери</td><td class="cell-Wt{D"><time>@January 18, 2020</time></td><td class="cell-My*&#x27;"><time>@January 20, 2020</time></td><td class="cell-0*Ld"></td></tr><tr id="d28abfeb-7d1b-4318-a4b0-cefcf88f50cb"><td class="cell-title"><a href="https://www.notion.so/d28abfeb7d1b4318a4b0cefcf88f50cb">Мы</a></td><td class="cell-|rUh">Евгений Замятин</td><td class="cell-Wt{D"><time>@January 9, 2020</time></td><td class="cell-My*&#x27;"><time>@January 18, 2020</time></td><td class="cell-0*Ld">История и персонажи как то совсем не зацепили. Сама концепция такого мира прикольная и понятная, но вот написано как по мне так себе</td></tr><tr id="b1341ee9-4f4a-4f6e-a5ea-487ded801046"><td class="cell-title"><a href="https://www.notion.so/b1341ee94f4a4f6ea5ea487ded801046">Идеальный программист</a></td><td class="cell-|rUh">Роберт Мартин</td><td class="cell-Wt{D"><time>@January 4, 2020</time></td><td class="cell-My*&#x27;"><time>@February 18, 2020</time></td><td class="cell-0*Ld">Книга открыла глаза на некоторые аспекты работы программиста</td></tr><tr id="f43e7d7c-93b4-4f07-b638-d31abe5ea45d"><td class="cell-title"><a href="https://www.notion.so/451-f43e7d7c93b44f07b638d31abe5ea45d">451 градус по Фаренгейту</a></td><td class="cell-|rUh">Рэй Брэдбери</td><td class="cell-Wt{D"></td><td class="cell-My*&#x27;"><time>@January 4, 2020</time></td><td class="cell-0*Ld"></td></tr></tbody></table></div><h2 id="505191d9-6363-4547-b656-daed61eda51c" class="block-color-teal">Fiction</h2><ul id="e3c387d9-89e8-4798-8f17-da7e76fdfa80" class="bulleted-list"><li style="list-style-type:disc">Властелин колец</li></ul><ul id="0118eebb-724e-4309-8b2a-3ca313d03679" class="bulleted-list"><li style="list-style-type:disc">Шерлок Холмс</li></ul><ul id="b9cee313-9882-4688-8588-53d0c9431071" class="bulleted-list"><li style="list-style-type:disc">Энола Холмс</li></ul><ul id="5b3a1eb6-3d97-4311-adae-829ad8c5b184" class="bulleted-list"><li style="list-style-type:disc">Эрагон</li></ul><ul id="780e37bd-8366-43c1-9781-12f7e02edfd7" class="bulleted-list"><li style="list-style-type:disc">Диккенс</li></ul><ul id="348c8e85-6b85-486a-a26f-22fd35e8f6e4" class="bulleted-list"><li style="list-style-type:disc">Шекспир</li></ul><ul id="2df1db7e-055c-4166-bc0b-addb12fc945b" class="bulleted-list"><li style="list-style-type:disc">Данте</li></ul><ul id="cf37ea87-f8ab-4636-bb88-dcd8de90ad61" class="bulleted-list"><li style="list-style-type:disc">Эдгар По</li></ul><ul id="77d7f0fd-7451-4f34-bc65-618111f77863" class="bulleted-list"><li style="list-style-type:disc">Криптономикон</li></ul><ul id="ff21084a-23fd-4030-8597-cee31a3d12a1" class="bulleted-list"><li style="list-style-type:disc">Пикник на обочине</li></ul><ul id="efe7df69-2b56-448f-9cb9-840e102c44c3" class="bulleted-list"><li style="list-style-type:disc">Капитан Пантоха и рота добрых услуг</li></ul><ul id="0233b3ad-de9d-4d90-87de-f7ecc2c6417c" class="bulleted-list"><li style="list-style-type:disc">Метро 2020</li></ul><ul id="ea3b2b70-43e1-4f18-baf6-84314b344dda" class="bulleted-list"><li style="list-style-type:disc">Wattpad</li></ul><ul id="62281b2b-4ab0-46f9-a5ae-a9724352a6e9" class="bulleted-list"><li style="list-style-type:disc">Билли Миллиган</li></ul><ul id="ff002c9a-689e-4fc7-8546-4d086aef99d5" class="bulleted-list"><li style="list-style-type:disc">Агата Кристи</li></ul><ul id="f0509780-3cea-4411-b175-f615a48f3af4" class="bulleted-list"><li style="list-style-type:disc">Мемуары Гейши</li></ul><ul id="da9d0c2e-56b0-42db-a007-5d0cd9a718c4" class="bulleted-list"><li style="list-style-type:disc">Стивен Кинг</li></ul><ul id="08e72713-df0f-418d-8002-c9b141c406a0" class="bulleted-list"><li style="list-style-type:disc">Харуки Мураками</li></ul><ul id="59e5a7a0-7d9d-450c-a933-43cf7ea8f187" class="bulleted-list"><li style="list-style-type:disc">Платон</li></ul><ul id="a1c6668b-d8d5-4f01-915e-fbeb4104d676" class="bulleted-list"><li style="list-style-type:disc">Азимов и остальные фантасты из четверки</li></ul><ul id="98eaa0bc-ddc7-447e-a89f-91cd3a5854e2" class="bulleted-list"><li style="list-style-type:disc">Русская классика</li></ul><ul id="ba6ab78c-9d10-422f-9224-63b806b924fc" class="bulleted-list"><li style="list-style-type:disc">Джек Лондон</li></ul><ul id="a2c33367-193b-45a5-b3e3-8760578d24cf" class="bulleted-list"><li style="list-style-type:disc">Приключения Гулливера</li></ul><ul id="995ac228-6380-4025-8d31-98d49a572546" class="bulleted-list"><li style="list-style-type:disc">Граф Монте Кристо</li></ul><ul id="8a51efb1-0626-400f-bce6-45e5828192f8" class="bulleted-list"><li style="list-style-type:disc">Робинзон Крузо</li></ul><ul id="85ec2b4e-b3a4-4aa5-8439-bde8cf82562d" class="bulleted-list"><li style="list-style-type:disc">You</li></ul><ul id="cbf8a692-f19c-426e-abf8-31a31b5d270f" class="bulleted-list"><li style="list-style-type:disc">Дон Кихот</li></ul><ul id="4a2992a2-b64e-453e-846b-49727c65b2f4" class="bulleted-list"><li style="list-style-type:disc">Мастер и Маргарита</li></ul><ul id="1285b2b1-555b-4012-b4d0-010b7e79f95d" class="bulleted-list"><li style="list-style-type:disc">Три мушкетера</li></ul><ul id="61644e00-ce94-42bf-bd33-2544cb785792" class="bulleted-list"><li style="list-style-type:disc">Грозовой перевал</li></ul><ul id="9eb40d88-db29-40cd-9935-fc8c533db9e5" class="bulleted-list"><li style="list-style-type:disc">Одиссея</li></ul><ul id="5ee77956-5d30-4287-9a51-085233f7af74" class="bulleted-list"><li style="list-style-type:disc">Франкеншейн</li></ul><ul id="ee5cfbb8-cfd5-4ac4-b467-201ee31d80ce" class="bulleted-list"><li style="list-style-type:disc">Моби Дик</li></ul><ul id="91f08b82-404c-48db-925f-410201f03914" class="bulleted-list"><li style="list-style-type:disc">Жюль Верн</li></ul><ul id="3e8b34e6-2e15-41ad-9d7b-7d3b9908d492" class="bulleted-list"><li style="list-style-type:disc">Вирджиния Вулф</li></ul><ul id="6d30812b-63e1-4f6b-91c1-78c5b1394351" class="bulleted-list"><li style="list-style-type:disc">Мечтают ли андроиды об электроовцах</li></ul><ul id="06949997-9398-4811-a9ce-c3138f415611" class="bulleted-list"><li style="list-style-type:disc">Кафка</li></ul><ul id="c23e21f6-6e71-4682-b816-9bb52ba0e29c" class="bulleted-list"><li style="list-style-type:disc">Дзен и искусство ухода за мотоциклом</li></ul><ul id="faa611ab-aa0a-4276-b2ea-182738502978" class="bulleted-list"><li style="list-style-type:disc">Молчание ягнят</li></ul><ul id="7d78d596-78df-4789-a3b8-807338684394" class="bulleted-list"><li style="list-style-type:disc">Роберт Асприн</li></ul><ul id="ff82157c-157a-4063-afa2-c121557f4f49" class="bulleted-list"><li style="list-style-type:disc">Дом падших ангелов</li></ul><h2 id="b4725f0f-ef19-4766-9034-da816ceb9f06" class="block-color-teal">Non-fiction</h2><ul id="b3681240-a0b6-48ed-907e-011ae9cf76f8" class="bulleted-list"><li style="list-style-type:disc">How Music Works by David Byrne</li></ul><ul id="d4933832-0024-4b97-a349-86b7836db1dc" class="bulleted-list"><li style="list-style-type:disc">Deep Work by Cal Newport</li></ul><ul id="c152586d-85e9-4d92-b61c-94fa34741238" class="bulleted-list"><li style="list-style-type:disc">Сила искусства. Саймон Шамма</li></ul><ul id="0afa5aea-c9b6-41cf-a832-88e2a92b833d" class="bulleted-list"><li style="list-style-type:disc">Лекции по кинорежиссуре - Андрей Тарковский</li></ul><ul id="4d3466c4-426e-473f-b80a-05bcf02c1e29" class="bulleted-list"><li style="list-style-type:disc">4-hour work week</li></ul><ul id="bd7b1854-b384-4864-a68d-bdfc949e3b9c" class="bulleted-list"><li style="list-style-type:disc">Show your work</li></ul><ul id="53a3374a-20ed-4a3f-b857-e717dec61a6a" class="bulleted-list"><li style="list-style-type:disc">Anything you want</li></ul><ul id="53b68b74-bcdf-40b7-b4fb-e86b6642323f" class="bulleted-list"><li style="list-style-type:disc">Essentialism</li></ul><ul id="a8c4117c-6b6f-410c-aa70-5d92b68f2619" class="bulleted-list"><li style="list-style-type:disc">How to win friends and influence people</li></ul><ul id="03f5238c-e224-4dbc-9e58-bae2e3fdaf18" class="bulleted-list"><li style="list-style-type:disc">The 7 Habits Of Highly Effective People</li></ul><ul id="2cd2d1ba-283d-45f8-95fd-0293e3c5440f" class="bulleted-list"><li style="list-style-type:disc">Do the work</li></ul><ul id="60fe857d-ecdb-4367-b451-f220600fd03e" class="bulleted-list"><li style="list-style-type:disc">Rationality: From AI to Zombies</li></ul><ul id="8bfae62c-7d57-4158-9ab8-5f76d74d66bf" class="bulleted-list"><li style="list-style-type:disc">Гёдель, Эшер, Бах</li></ul><ul id="b274e617-111e-45b8-99ba-7bcc2c55bdcc" class="bulleted-list"><li style="list-style-type:disc">Об интеллекте</li></ul><ul id="0b911a99-c757-4c17-a6d1-2cd35258a4ce" class="bulleted-list"><li style="list-style-type:disc">Новый ум короля</li></ul><ul id="8b6e5b2a-2257-4541-b45c-6ed8f6cd1d2f" class="bulleted-list"><li style="list-style-type:disc">Перельман</li></ul><ul id="ac6b4979-d07b-4d4d-b8ec-fa01d179ebca" class="bulleted-list"><li style="list-style-type:disc">Фейнман</li></ul><ul id="ecc4b687-67e5-4f41-b97b-459a78ca49f3" class="bulleted-list"><li style="list-style-type:disc">Хокинг</li></ul><ul id="9e52de42-e62f-4a20-9129-f724a28f6dcf" class="bulleted-list"><li style="list-style-type:disc">Фрейд</li></ul><ul id="dd9ac1ce-2726-490c-903b-e6ace375bf45" class="bulleted-list"><li style="list-style-type:disc">Искусство войны</li></ul><ul id="213b9ed9-53d7-4019-a38b-8b6c26173035" class="bulleted-list"><li style="list-style-type:disc">Скорочтение - Камп</li></ul><ul id="6ae5d6c4-fb8e-4f9c-8fd5-660d2d271a61" class="bulleted-list"><li style="list-style-type:disc">Как читать книги</li></ul><ul id="4e374d8d-ece9-4e92-bde5-cd1b447262bd" class="bulleted-list"><li style="list-style-type:disc">Rich dad, poor dad</li></ul><ul id="1e40c9ec-83c4-476c-b121-a8d2e7fe6046" class="bulleted-list"><li style="list-style-type:disc">Гегель - Логика</li></ul><ul id="28286120-753c-4b17-9f3e-74a4fdd5d131" class="bulleted-list"><li style="list-style-type:disc">Thinking Fast and Slow</li></ul><h2 id="998de153-ddd6-45c5-86ce-d772799b8e26" class="block-color-teal">Programming</h2><ul id="e8edd727-a6b5-447d-aa5a-225b1680e74d" class="bulleted-list"><li style="list-style-type:disc">Чистая архитектура</li></ul><ul id="7ec80ec7-19f7-4b6f-980f-9e930b8fac5c" class="bulleted-list"><li style="list-style-type:disc">Рефакторинг</li></ul><ul id="965b9133-93b7-4643-8672-5262e02a7ac2" class="bulleted-list"><li style="list-style-type:disc">Head first</li></ul><p id="05980ee2-d7ab-44c0-a211-3222e5a4af96" class="">
+</p><p id="7b1d6542-1ab4-4cf5-a9c5-a69579b5e0f7" class="">
+</p><p id="e457713b-8c4f-4530-9790-c708ef649ec2" class="">
+</p><hr id="2ab31d5d-9e05-4cba-8ccc-bc6905104837"/><h2 id="d7722b41-c4ac-448c-8dc8-6f4dfacc87e2" class="block-color-teal">New way</h2><h3 id="c2205edb-f760-481c-a32a-24c27bc6ed1e" class="">To read</h3><ul id="2e29cf78-61fb-4696-8d2c-3c01ad69b377" class="toggle"><li><details open=""><summary>Fiction</summary><ul id="3408fe2f-a148-4fcd-a195-3809b897c45f" class="bulleted-list"><li style="list-style-type:disc">Властелин колец</li></ul><ul id="61947491-794f-405b-8c5c-bbef65bf74cd" class="bulleted-list"><li style="list-style-type:disc">Темные начала</li></ul></details></li></ul><ul id="f01efb9e-621c-4405-a42e-b9342e68e8bd" class="toggle"><li><details open=""><summary>Non-fiction</summary><ul id="01ba2638-9624-4dde-90e7-78bf46f65c4d" class="bulleted-list"><li style="list-style-type:disc">How Music Works by David Byrne</li></ul></details></li></ul><ul id="c65322be-6a99-4fd8-9df9-561d9b04bf2b" class="toggle"><li><details open=""><summary>Programming</summary><ul id="493e91d8-cd72-4e61-9c55-cb6f2a31a88e" class="bulleted-list"><li style="list-style-type:disc">Чистая архитектура</li></ul></details></li></ul><h3 id="e0497555-a910-40b5-9ef5-d4efa159f14d" class="">2021</h3><ul id="d1e0fd19-c413-47f6-9266-b785e481ebab" class="toggle"><li><details open=""><summary>Как изобрести все</summary><p id="483f4409-077a-4051-ad67-bec06f5cbbee" class="">Райан Норт</p><p id="823f9fd0-0fec-4daf-86ee-f33517fd09e8" class="block-color-teal">01.01.2021 - ...</p></details></li></ul><h3 id="ae9fc5a1-f7ef-4f3a-ad95-4d389c1e63b7" class="">2020</h3><ul id="e2463209-d555-40b6-bfb4-885077c43573" class="toggle"><li><details open=""><summary>Маленький принц</summary><p id="ceab76dd-9a3a-4ac9-a52b-a6b9234a6649" class="">Антуан де Сент-Экзюпери</p><p id="e4d8fe79-88e6-4eea-a2b4-cc60f3826a04" class="block-color-teal">18.01.2020 - 20.01.2020</p></details></li></ul><ul id="6999717c-4058-453b-bf13-db80f99bbda2" class="toggle"><li><details open=""><summary>Мы</summary><p id="0ff6453e-bbc8-4163-9b4d-bd32f3901a7c" class="">Евгений<mark class="highlight-gray"> </mark>Замятин</p><p id="5d85247f-9be3-47b1-9e3c-52ca0a4f2870" class="block-color-teal">09.01.2020 - 18.01.2020</p><p id="5d33c413-05ff-4e14-8ef9-4d71ea6107f4" class="">История и персонажи как то совсем не зацепили. Сама концепция такого мира прикольная и понятная, но вот написано как по мне так себе</p></details></li></ul><ul id="4d004d88-f1f1-4ea2-8384-0d132bce5d48" class="toggle"><li><details open=""><summary>Идеальный программист</summary><p id="3979cb75-ea66-460b-b565-7f51a4535c69" class="">Роберт Мартин</p><p id="f4c2c780-8117-43c8-81a0-0047b216df90" class="block-color-teal">04.01.2020 - 18.02.2020</p><p id="61564383-347c-4caa-9161-fd952a70fcc6" class="">Книга открыла глаза на некоторые аспекты работы программиста</p></details></li></ul><ul id="827de828-d28a-4563-8f56-9d4f66f21b0f" class="toggle"><li><details open=""><summary>451 градус по Фаренгейту</summary><p id="e00b1079-38eb-43a9-b9b9-ff9d2f10db0c" class="">Рэй Брэдбэри</p><p id="172bb46d-0bcb-4bdb-bf50-ff3c96c99fef" class="block-color-teal">... - 04.01.2020</p></details></li></ul><p id="3133d701-4544-496b-9d1f-39654888a38f" class="">Total: 25</p><p id="75ea06ad-bcdc-4d7f-ade8-e25b38bc00c3" class="">
+</p></div></article></body></html>
